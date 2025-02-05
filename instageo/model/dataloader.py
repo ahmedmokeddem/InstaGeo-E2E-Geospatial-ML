@@ -313,14 +313,12 @@ def get_raster_data(
     if (not is_label) and bands:
         data = data[bands, ...]
     
-    print(f"Before processing {data.shape}")
     if data.shape[0] == 18:  
         data = data.reshape(3, 6, data.shape[1], data.shape[2])  
     
     # Call process_image to replace the original 6 bands
     if not is_label:
         data = process_image(data)  # Now returns (6, H, W), replacing the old bands
-    print(f"After processing {data.shape}")
     return data
 
 
